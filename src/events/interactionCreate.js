@@ -43,7 +43,7 @@ export default (Bot) => {
 
         if (Channel) {
           interaction.followUp({
-            content: `You already have a ticket request.`,
+            content: `Zaten bir bilet talebiniz var.`,
             ephemeral: true,
           });
         } else {
@@ -83,14 +83,14 @@ export default (Bot) => {
             .then(async (Channel) => {
               interaction.followUp({
                 content:
-                  "Hey! Your ticket request has been successfully created.",
+                  "Hey! Bilet talebiniz başarıyla oluşturuldu.",
                 ephemeral: true,
               });
 
               Channel.send({
                 embeds: [
                   Utils.embed(
-                    `Ticket Creator Member Information: \n${interaction.user} (\`${interaction.user.id}\`) \n${Content}`,
+                    `Bilet Oluşturan Üye Information: \n${interaction.user} (\`${interaction.user.id}\`) \n${Content}`,
                     interaction.guild,
                     Bot,
                     interaction.user
@@ -109,7 +109,7 @@ export default (Bot) => {
       await interaction.showModal(Utils.modal());
     }
 
-    if (interaction.customId === "successTicket") {
+    if (interaction.customId === "başarı Bileti") {
       if (
         !Config.TICKET.STAFF_ROLES.some((x) =>
           interaction.member.roles.cache.has(x)
@@ -119,7 +119,7 @@ export default (Bot) => {
         await interaction.deferReply({ ephemeral: true });
 
         interaction.followUp({
-          content: `Only authorities can use the ticket validation system.`,
+          content: `Bilet doğrulama sistemini yalnızca yetkililer kullanabilir.`,
           ephemeral: true,
         });
 
@@ -144,7 +144,7 @@ export default (Bot) => {
         });
 
         interaction.followUp({
-          content: `The ticket has been successfully approved.`,
+          content: `Bilet başarıyla onaylandı.`,
           ephemeral: true,
         });
 
@@ -152,7 +152,7 @@ export default (Bot) => {
           content: `Heyy! <@!${interaction.channel.name.replace(
             "ticket-",
             ""
-          )}>, ticket has been successfully approved by the authorities.`,
+          )}>, bilet yetkililer tarafından başarıyla onaylandı.`,
         });
 
         return;
@@ -169,13 +169,13 @@ export default (Bot) => {
         ![interaction.guild.ownerId].includes(interaction.user.id)
       )
         return interaction.followUp({
-          content: `Only authorities can use the ticket archive system.`,
+          content: `Bilet arşiv sistemini sadece yetkililer kullanabilir.`,
           ephemeral: true,
         });
 
       if (interaction.channel.parentId === Config.TICKET.ARCHIVE_CATEGORY)
         return interaction.followUp({
-          content: `This ticket is already archived.`,
+          content: `Bu bilet zaten arşivlendi.`,
           ephemeral: true,
         });
 
@@ -205,7 +205,7 @@ export default (Bot) => {
           });
 
           interaction.followUp({
-            content: `Ticket successfully archived.`,
+            content: `Bilet başarıyla arşivlendi.`,
             ephemeral: true,
           });
         });
@@ -221,7 +221,7 @@ export default (Bot) => {
           interaction.message.components[0].components[0].data.disabled === true
         )
           return interaction.followUp({
-            content: `The support request has been approved by the authorities, you can no longer delete it.`,
+            content: `Destek talebi yetkililer tarafından onaylandı, artık silemezsiniz.`,
             ephemeral: true,
           });
       } else {
@@ -235,7 +235,7 @@ export default (Bot) => {
       }
 
       interaction.followUp({
-        content: `Your request has been received successfully after \`5 seconds\` the channel will be deleted automatically.`,
+        content: `İsteğiniz \`5 saniye\` sonra başarıyla alındı, kanal otomatik olarak silinecektir.`,
         ephemeral: true,
       });
 
