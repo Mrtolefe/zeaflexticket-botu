@@ -12,7 +12,7 @@ import Config from "../config.js";
 class Utils {
   static login(Bot) {
     Bot.login(Config.TOKEN ? Config.TOKEN : process.env.TOKEN)
-      .then(() => console.log("[BOT] Ticket bot active."))
+      .then(() => console.log("[BOT] Ticket bot aktif."))
       .catch((err) => console.log("" + err));
   }
 
@@ -96,7 +96,7 @@ class Utils {
 
     let Modals = new ModalBuilder()
       .setCustomId("ticket")
-      .setTitle("Ticket Creation Request");
+      .setTitle("Bilet Oluşturma Talebi");
 
     let Row = [];
     Inputs.map((x) => Row.push(new ActionRowBuilder().addComponents([x])));
