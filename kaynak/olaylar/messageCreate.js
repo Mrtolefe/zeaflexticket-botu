@@ -15,7 +15,7 @@ export default (Bot) => {
     if (Command === "ticket") {
       if (!message.member.permissions.has("0x0000000000000008"))
         return message.reply({
-          content: "You are not permissions to use this command.",
+          content: "Bu komutu kullanma izniniz yok.",
         });
 
       message.delete().catch(() => {
@@ -28,7 +28,7 @@ export default (Bot) => {
 
       if (!TicketChannel)
         return message.reply({
-          content: "Please write ticket channel ID in config file.",
+          content: "Lütfen yapılandırma dosyasına bilet kanalı kimliğini yazın.",
         });
 
       TicketChannel.send({
@@ -36,7 +36,7 @@ export default (Bot) => {
         components: [
           Utils.button(
             ButtonStyle.Primary,
-            "Open Ticket!",
+            "Destek Aç!",
             "🎫",
             "ticket",
             false
@@ -44,7 +44,7 @@ export default (Bot) => {
         ],
       });
 
-      return message.channel.send(`Sended the message to ${TicketChannel}`);
+      return message.channel.send(`mesajı şuraya gönderdi ${TicketChannel}`);
     }
   });
 };
